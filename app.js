@@ -9,6 +9,14 @@ function agregarAmigo() {
         listaNombresAmigos.push(nombreAmigo);
         console.log(listaNombresAmigos);
         document.querySelector("#amigo").value = ""; //posible nueva funcion
+        mostrarListaAmigos(nombreAmigo);
     }
     return;
+}
+
+function mostrarListaAmigos(nombreAmigo) {
+    const lista = document.getElementById("listaAmigos");
+    const li = document.createElement("li");
+    li.textContent = nombreAmigo;
+    lista.appendChild(li);
 }

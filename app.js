@@ -29,3 +29,10 @@ function mostrarListaAmigos(nombreAmigo) {
 function limpiarInput () {
     document.querySelector("#amigo").value = "";
 }
+
+function sortearAmigo() {
+    let posicionLista = Math.floor(Math.random() *listaNombresAmigos.length);
+    let nombreSeleccionado = listaNombresAmigos[posicionLista];
+    console.log(nombreSeleccionado);
+    return nombreSeleccionado;
+}

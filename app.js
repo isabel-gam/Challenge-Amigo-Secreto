@@ -3,7 +3,7 @@ let listaNombresAmigos = []; // declaro la cadena
 function agregarAmigo() {
     let nombreAmigo = document.getElementById("amigo").value;
     if (nombreAmigo.trim() === ""){
-        alert ("Ingresa un nombre valido")
+        alert ("Por favor, inserte un nombre")
         limpiarInput ();
     }else {
         if (listaNombresAmigos.includes(nombreAmigo)) { //Evitar duplicado
@@ -31,8 +31,18 @@ function limpiarInput () {
 }
 
 function sortearAmigo() {
-    let posicionLista = Math.floor(Math.random() *listaNombresAmigos.length);
-    let nombreSeleccionado = listaNombresAmigos[posicionLista];
-    console.log(nombreSeleccionado);
-    return nombreSeleccionado;
+    if (listaNombresAmigos.length === 0) {
+    alert("No has ingresado aún ningun nombre");
+    } else {
+        let posicionLista = Math.floor(Math.random() *listaNombresAmigos.length);
+        let nombreSeleccionado = listaNombresAmigos[posicionLista];
+        console.log(nombreSeleccionado);
+        mostrarResultado(nombreSeleccionado);
+        return nombreSeleccionado;
+    }
+}
+
+function mostrarResultado(nombre) {
+    document.getElementById("resultado").innerHTML = `<li>Tu amigo secreto es: ${nombre}</li>`;
+    return;
 }

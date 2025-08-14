@@ -4,12 +4,17 @@ function agregarAmigo() {
     let nombreAmigo = document.getElementById("amigo").value;
     if (nombreAmigo.trim() === ""){
         alert ("Ingresa un nombre valido")
-        document.querySelector("#amigo").value = ""; //posible nueva funcion
+        limpiarInput ();
     }else {
-        listaNombresAmigos.push(nombreAmigo);
-        console.log(listaNombresAmigos);
-        document.querySelector("#amigo").value = ""; //posible nueva funcion
-        mostrarListaAmigos(nombreAmigo);
+        if (listaNombresAmigos.includes(nombreAmigo)) { //Evitar duplicado
+            alert("Ese nombre ya fue ingresado");
+            limpiarInput ();
+        } else {
+            listaNombresAmigos.push(nombreAmigo);
+            console.log(listaNombresAmigos);
+            limpiarInput ();
+            mostrarListaAmigos(nombreAmigo);
+        }
     }
     return;
 }
@@ -19,4 +24,8 @@ function mostrarListaAmigos(nombreAmigo) {
     const li = document.createElement("li");
     li.textContent = nombreAmigo;
     lista.appendChild(li);
+}
+
+function limpiarInput () {
+    document.querySelector("#amigo").value = "";
 }

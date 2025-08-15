@@ -13,17 +13,21 @@ function agregarAmigo() {
             listaNombresAmigos.push(nombreAmigo);
             console.log(listaNombresAmigos);
             limpiarInput ();
-            mostrarListaAmigos(nombreAmigo);
+            mostrarListaAmigos();
         }
     }
     return;
 }
 
-function mostrarListaAmigos(nombreAmigo) {
+function mostrarListaAmigos() {
     const lista = document.getElementById("listaAmigos");
-    const li = document.createElement("li");
-    li.textContent = nombreAmigo;
-    lista.appendChild(li);
+    lista.innerHTML = ""; // limpia antes de volver a mostrar
+
+    for (let i = 0; i < listaNombresAmigos.length; i++) {
+        const li = document.createElement("li");
+        li.textContent = listaNombresAmigos[i];
+        lista.appendChild(li);
+    }
 }
 
 function limpiarInput () {
@@ -46,3 +50,4 @@ function mostrarResultado(nombre) {
     document.getElementById("resultado").innerHTML = `<li>Tu amigo secreto es: ${nombre}</li>`;
     return;
 }
+

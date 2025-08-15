@@ -1,6 +1,10 @@
 let listaNombresAmigos = []; // declaro la cadena
 
 function agregarAmigo() {
+    if (listaNombresAmigos==0)
+    {
+       document.getElementById("resultado").innerHTML = ""; 
+    }
     let nombreAmigo = document.getElementById("amigo").value;
     if (nombreAmigo.trim() === ""){
         alert ("Por favor, inserte un nombre")
@@ -42,6 +46,7 @@ function sortearAmigo() {
         let nombreSeleccionado = listaNombresAmigos[posicionLista];
         console.log(nombreSeleccionado);
         mostrarResultado(nombreSeleccionado);
+        reiniciar();
         return nombreSeleccionado;
     }
 }
@@ -51,3 +56,10 @@ function mostrarResultado(nombre) {
     return;
 }
 
+function reiniciar() {
+    const lista = document.getElementById("listaAmigos");
+    lista.innerHTML = "";
+
+    listaNombresAmigos.length = 0;
+    console.log(listaNombresAmigos);
+}
